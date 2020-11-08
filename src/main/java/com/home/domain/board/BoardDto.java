@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name="TB_BOARD")
+@Table(name = "TB_BOARD")
 public class BoardDto implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -31,4 +32,10 @@ public class BoardDto implements Serializable {
 
   @Column(name = "content", nullable = true)
   private String content;
+
+  @Builder
+  public void update(String subject, String content) {
+    this.subject = subject;
+    this.content = content;
+  }
 }
